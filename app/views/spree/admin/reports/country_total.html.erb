@@ -1,0 +1,75 @@
+<% content_for :page_title do %>
+  <%= Spree.t(:country_total) %>
+<% end %>
+<%= button_link_to Spree.t(:download_report), country_total_admin_reports_path(params.merge( template_name: 'sku_sales', format: 'csv' )), :icon => 'download' %>
+<% content_for :page_actions do %>
+  <li>
+    <%= link_to_with_icon 'arrow-left', Spree.t(:back_to_reports_list), spree.admin_reports_url, :class => 'button' %>
+  </li>
+<% end %>
+<% content_for :table_filter_title do %>
+  <%= Spree.t(:date_range) %>
+<% end %>
+<%= render 'country_filter', countries: @countries %>
+<table class='table table-bordered admin-report' data-hook='sales_total'>
+  <thead>
+    <tr>
+      <th>
+        <%= Spree.t(:country_name) %>
+      </th>
+      <th>
+        <%= Spree.t(:currency) %>
+      </th>
+      <th>
+        <%= Spree.t(:total_sales) %>
+      </th>
+      <th>
+        <%= Spree.t(:total_sales_usd) %>
+      </th>
+      <th>
+        <%= Spree.t(:total_count) %>
+      </th>
+      <th>
+        <%= Spree.t(:average_revenue_per_user) %>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @totals.each do |key, row| %>
+      <tr class='align-center'>
+        <td>
+          <%= row[:country_name] %>
+        </td>
+        <td>
+          <%= row[:currency] %>
+        </td>
+        <td>
+          <%= row[:country_total].format %>
+        </td>
+        <td>
+          <%= row[:country_total_usd].format %>
+        </td>
+        <td>
+          <%= number_with_delimiter(row[:total_count], :delimiter => ',') %>
+        </td>
+        <td>
+          <%= row[:arpu] %>
+        </td>
+      </tr>
+    <% end %>
+    <tr class='align-center'>
+      <td>Grand total</td>
+      <td></td>
+      <td></td>
+      <td>
+        <%= @country_total.format rescue '$0.00' %>
+      </td>
+      <td>
+        <%= number_with_delimiter(@total_count, :delimiter => ',') %>
+      </td>
+      <td>
+        <%= (@country_total / @total_count) rescue '$0.00' %>
+      </td>
+    </tr>
+  </tbody>
+</table>

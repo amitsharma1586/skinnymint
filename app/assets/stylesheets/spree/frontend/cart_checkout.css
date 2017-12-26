@@ -1,0 +1,22 @@
+.ui-widget-content {
+  background:#ddd;
+  font-size: 12px;
+  border-color: #ddd;
+  box-shadow: 0 .1em .2em rgba(187, 187, 187, 0.64);
+  line-height: 1.2;
+  max-height: 20em;
+  overflow: hidden;
+  overflow-y: auto;
+  max-width: 30%;
+  position:relative;
+}
+
+.ui-menu-item {
+  padding: 3px;
+  position: relative;
+  border: 0;
+  border-left: 2px solid transparent;
+  position: relative;
+  list-style-type:circles;
+  margin-bottom: 0px;
+}

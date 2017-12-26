@@ -1,0 +1,16 @@
+== README
+NOTE:- Before push any code run 
+<tt>rubocop</tt>
+it should not give any error or offence if it is giving any issue fixed that first then pushed to barnch
+
+This README would normally document whatever steps are necessary to get the
+application up and running.
+
+Things you may want to cover:
+
+* Ruby version 2.2.1
+* Spree version 3-0-stable
+* Rails 4.2.0
+* Services (job queues, cache servers, search engines, etc.)
+* Sidekiq Crone (https://github.com/ondrejbartas/sidekiq-cron) 
+* Redis

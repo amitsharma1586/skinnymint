@@ -1,0 +1,25 @@
+<% content_for :page_title do %>
+  <%= link_to Spree.t(:reports), spree.admin_reports_url %> /
+  <%= Spree.t(:sales_totals) %>
+<% end %>
+<%= button_link_to Spree.t(:download_report), country_sku_total_admin_reports_path(params.merge( template_name: 'sku_sales', format: 'csv' )), :icon => 'download'%>
+
+<%= render partial: 'country_sku_filter', locals: { countries: @countries, skus: @skus}%>
+<table class='table table-bordered admin-report' data-hook='sales_total'>
+  <thead>
+    <tr>
+      <th> <%= Spree.t(:country) %> </th>
+      <th> <%= Spree.t(:SKU) %> </th>
+      <th> <%= Spree.t(:total) %> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @totals.each do |key, row| %>
+      <tr class='align-center'>
+        <td> <%= row[:country_name] %> </td>
+        <td> <%= row[:sku] %> </td>
+        <td> <%= row[:total_count] %> </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

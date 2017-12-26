@@ -1,0 +1,1 @@
+UpsOrder = Class.new(FulfillmentOrder)

@@ -1,0 +1,26 @@
+<script>
+  <% if order && order_just_completed?(order)%>
+    ga('require', 'ecommerce', 'ecommerce.js');
+    ga('ecommerce:addTransaction', {
+      'id': '<%= j order.number %>',
+      'affiliation': '<%= get_order_gta_affiliation(order.id) %>',
+      'revenue': '<%= order.total %>',
+      'shipping': '<%= order.ship_total %>',
+      'tax': '<%= order.tax_total %>',
+      'currency': '<%= current_currency %>',
+      'dimension1': '<%= get_order_affiliate(order.id) %>'
+    });
+    <% order.line_items.each do |line_item| %>
+      ga('ecommerce:addItem', {
+        'id': '<%= j order.number %>',
+        'name': '<%= j line_item.variant.product.name %>',
+        'sku': '<%= j line_item.variant.sku %>',
+        'category': '',
+        'price': '<%= line_item.price %>',
+        'quantity': '<%= line_item.quantity %>',
+        'dimension2': '<%= get_affiliate(order.id, line_item.id) %>'
+      });
+    <% end %>
+    ga('ecommerce:send');
+  <% end %>
+</script>

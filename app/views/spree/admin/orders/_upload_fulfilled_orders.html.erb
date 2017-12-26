@@ -1,0 +1,18 @@
+<table class='table' id='listing_orders' data-hook=''>
+  <thead>
+    <tr data-hook='admin_orders_index_headers'>
+      <th><%= Spree.t(:order_number) %></th>
+      <th><%= Spree.t(:tracking_number) %></th>
+      <th><%= Spree.t(:tracking_url) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% orders.each do |order| %>
+      <tr data-hook='admin_orders_index_rows' class='state-complete odd'>
+        <td><%= order.number %></td>
+        <td><%= order.tracking %></td>
+        <td><%= order.tracking_url %></td>
+      </tr>
+    <%end%>
+  </tbody>
+</table>

@@ -1,0 +1,7 @@
+<p>Hi, attached is the labels pdf for <%=@carrier %> orders synched on <%= @creation_date %></p>
+<br>
+<br>
+<% if @url.present? %>
+  View/Download the pdf file
+  <%= link_to 'download', @url %>
+<% end %>

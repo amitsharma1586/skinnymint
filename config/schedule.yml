@@ -1,0 +1,27 @@
+#config/schedule.yml
+
+asendia_shipment_job:
+  cron: "30 14 1/1 * *"
+  class: "AsendiaShipmentWorker"
+  queue: default
+
+ups_shipment_job:
+  cron: "30 14 1/1 * *"
+  class: "EasypostOrderWorker"
+  queue: default
+  args:
+    name: "ups"
+
+auspost_shipment_job:
+  cron: "30 14 1/1 * *"
+  class: "EasypostOrderWorker"
+  queue: default
+  args:
+    name: "auspost"
+
+aramex_shipment_job:
+  cron: "30 14 1/1 * *"
+  class: "EasypostOrderWorker"
+  queue: default
+  args:
+    name: "aramex"

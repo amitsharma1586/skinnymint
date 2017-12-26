@@ -1,0 +1,35 @@
+<script>
+  window.dataLayer = (window.dataLayer === undefined) ? [] : window.dataLayer;
+  order_info = {}
+  cart_info = {}
+  cart_data = ""
+  order_info['sitetype'] =  '<%= session[:browser] == 'mobile'? 'm' : 'd' %>'
+  cart_info['user_id'] = '<%= j cookies[:guest_token] %>'
+  <% if taxonomies && active_products %>
+    order_info['productid'] = '<%= active_products.map{|product| product.id}.join("|") %>'
+  <% end %>
+  <% if product %>
+    cart_info['sku'] = '<%= j product.sku %>'
+    order_info['productid'] = '<%= product.id %>'
+  <% end %>
+  <% if order %>
+    order_info['prices'] = '<%= order.line_items.map{|line_item| line_item.price}.join("|") %>'
+    order_info['productid'] = '<%= order.line_items.map{|line_item| line_item.product.id}.join("|") %>'
+    order_info['quantities'] = '<%= order.line_items.map{|line_item| line_item.quantity}.join("|") %>'
+    <% order.line_items.each_with_index do |line_item, index| %>
+      cart_data += '&qty[<%= index %>]=<%= line_item.quantity %>'
+      cart_data += '&value[<%= index %>]=<%= (line_item.amount * 100).to_i %>'
+      cart_data += '&sku[<%= index %>]=<%= line_item.sku %>'
+    <% end %>
+    cart_info['cart_data'] = cart_data
+  <% end %>
+  <% if order && order_just_completed?(order) %>
+    order_info['orderid'] = '<%= order.number %>'
+    cart_info['order_purchase'] = cart_data + '&unique=<%= order.number %>'
+  <% end %>
+  <% if current_spree_user %>
+    cart_info['extra'] = '&ut1=<%= Digest::SHA256.hexdigest current_spree_user.email.downcase %>'
+  <% end %>
+  window.dataLayer.push(order_info)
+  window.dataLayer.push(cart_info)
+</script>

@@ -1,0 +1,28 @@
+<div class='well'>
+  <%= form_tag spree.country_sku_name_admin_reports_path, method: :get  do  %>
+    <div class='form-group date-range-filter'>
+      <div class='date-range-filter row'>
+        <div class='col-md-6'>
+          <%= label_tag nil, Spree.t(:start), class:  'inline' %>
+          <%= text_field_tag 'completed_at_gt', datepicker_field_value(params[:completed_at_gt]), class: 'datetimepicker datepicker datepicker-from form-control' %>
+        </div>
+        <div class='col-md-6'> 
+          <%= label_tag nil, Spree.t(:end), class:  'inline' %>
+          <%= text_field_tag 'completed_at_lt', datepicker_field_value(params[:completed_at_lt]), class: 'datetimepicker datepicker datepicker-to form-control' %>
+        </div>
+        </br>
+        <div class='col-md-6'>
+          <%= label_tag nil, Spree.t(:Country), class:  'inline' %>
+          <%= select_tag 'country', options_from_collection_for_select(countries, 'iso', 'name'),  include_blank: true %>
+        </div>
+        <div class='col-md-6'>
+          <%= label_tag nil, Spree.t(:sku), class:  'inline' %>
+          <%= select_tag 'sku', options_for_select(sku_names.flatten.uniq),  include_blank: true %>
+        </div>
+      </div>
+    </div>
+    <div class='form-actions'>
+      <%= button Spree.t(:search), 'search' %>
+    </div>
+  <% end %>
+</div>

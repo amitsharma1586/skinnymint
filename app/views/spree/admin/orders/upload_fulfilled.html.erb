@@ -1,0 +1,35 @@
+<p><%= Spree.t(:file_format_csv) %></p>
+<%= form_tag({action: :upload_fulfilled, method: 'post'}, multipart: true) do%>
+	<%= file_field_tag 'csv' %></br>
+  <%= submit_tag Spree.t(:upload), class: 'btn btn-success' %>
+<% end %>
+</br>
+<% if @not_found_orders.present? %>
+  <h4><b><u><%= Spree.t(:not_found_orders) %></b></u></h4>
+  <p><%= Spree.t(:order_number_not_found) %></p>
+  <% @not_found_orders.each do |order_number| %>
+    <p><%= order_number %></p>
+  <% end %>
+<% end %>
+<% if @missing_tracking_orders.present? %>  
+  <h4><b><u><%= Spree.t(:missing_tracking_orders) %></b></u></h4>
+	<p><%= Spree.t(:no_tracking_number) %></p>
+	<%= render 'upload_fulfilled_orders', orders: @missing_tracking_orders %>
+<% end %>
+</br>
+<% if @unfulfilled_orders.present? %>
+  <p><%= Spree.t(:shipping_confirmation_email) %></p>
+  <%= form_tag({action: :confirm_fulfilled}, method: :post, class: 'text-center') do %>
+    <% @unfulfilled_orders.each do |order| %>
+      <%= hidden_field_tag "orders[#{order.id}]", order.tracking %>
+    <% end %>
+    <%= submit_tag Spree.t(:confirm), class: 'btn btn-success' %>
+  <% end %>
+  <%= render 'upload_fulfilled_orders', orders: @unfulfilled_orders %>
+<% end %>
+
+<% if @already_shipped_orders.present? %>
+  <h4><b><u><%= Spree.t(:already_shipped_orders) %></b></u></h4>
+  <p><%= Spree.t(:order_shipped) %></p>
+  <%= render 'upload_fulfilled_orders', orders: @already_shipped_orders %>
+<% end %>

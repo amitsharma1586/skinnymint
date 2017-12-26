@@ -1,0 +1,1 @@
+AsendiaOrder = Class.new(FulfillmentOrder)

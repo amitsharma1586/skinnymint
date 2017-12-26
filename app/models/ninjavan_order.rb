@@ -1,0 +1,1 @@
+NinjavanOrder = Class.new(FulfillmentOrder)

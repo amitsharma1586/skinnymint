@@ -1,0 +1,57 @@
+unfulfilled_email:
+  asendia: 'kaushal@supernova.xyz,anand.tripathy@supernova.xyz,mrinal.kumar@supernova.xyz'
+  aramex: 'kaushal@supernova.xyz,anand.tripathy@supernova.xyz,mrinal.kumar@supernova.xyz'
+  ups: 'kaushal@supernova.xyz,anand.tripathy@supernova.xyz,mrinal.kumar@supernova.xyz'
+  auspost: 'kaushal@supernova.xyz,anand.tripathy@supernova.xyz,mrinal.kumar@supernova.xyz'
+  from: 'jasmine@skinnymint.com'
+order_sync_date:
+  asendia: 'Tue, 07 Feb 2017'
+  aramex: 'Tue, 07 Feb 2017'
+  ups: 'Tue, 07 Feb 2017'
+  auspost: 'Tue, 07 Feb 2017'
+  ninjavan: 'Tue, 07 Feb 2017'
+labels_pdf_receiver_email: 'kaushal@supernova.xyz,anand.tripathy@supernova.xyz,mrinal.kumar@supernova.xyz'
+shipping_address:
+  auspost:
+    street1: '15-19 Beatty St'
+    city: 'North Shore'
+    state: 'Victoria'
+    zipcode: '3214'
+    country: 'Australia'
+    phone: ''
+  company_name: 'Sand and Sky'
+  street1: '26 Kallang Avenue'
+  city: 'Singapore'
+  state: ''
+  zipcode: '339417'
+  country: 'SG'
+  phone: '+6567504478'
+  email: 'hello@sandandsky.com'
+parcel:
+  description: 'Coming soon'
+  value: '20'
+  length: 10
+  width: 15
+  height: 5
+  weight: 0.72
+  hs_tariff_number: 123456
+  customs_type: 'G'
+  currency: 'SGD'
+  volume: 750
+  easypost:
+    value: 20
+    contents_type: 'other'
+    eel_pfc: 'NOEEI 30.37(a)'
+    non_delivery: 'return'
+    restriction_type: 'none'
+  asendia:
+    service_type: 'SG-SP'
+    value: '20'
+supported_carriers: ['ups', 'aramex', 'auspost']
+aramex_addr_validation:
+  url: 'https://ws.aramex.net/ShippingAPI.V2/Location/Service_1_0.svc/json/ValidateAddress'
+  city_fetch_url: 'https://ws.aramex.net/ShippingAPI.V2/Location/Service_1_0.svc/json/FetchCities'
+  country_code: 'SG'
+  account_entity: 'SIN'
+  account_number: '120760651'
+  account_pin: '115265'

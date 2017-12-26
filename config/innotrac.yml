@@ -1,0 +1,50 @@
+development:
+  gateway: "gatewaytest.west.innotrac.com"
+  port: 8453
+  post_url: "/invoke/INOC_ATS_CRMS.SOA.InocOrders.DMACCEPT:InocOrders"
+  username: snstest
+  password: xmltest
+  ftp_url: 65.118.112.212
+  ftp_username: sandsky
+  ftp_password: rRgYHAuHCAj3Whw
+  promotion: 'SSWEB'
+  payment_plan: 'FUL1'
+  project_code: '909'
+  telemarketer: 'SandSky'
+  handle_skus:
+    'SS-PCLAY': 'SS-PCLAY'
+    'SS-BPCLAY': 'SS-BPCLAY'
+
+staging:
+  gateway: "gatewaytest.west.innotrac.com"
+  port: 8453
+  post_url: "/invoke/INOC_ATS_CRMS.SOA.InocOrders.DMACCEPT:InocOrders"
+  username: snstest
+  password: xmltest
+  ftp_url: 65.118.112.212
+  ftp_username: sandsky
+  ftp_password: rRgYHAuHCAj3Whw
+  promotion: 'SSWEB'
+  payment_plan: 'FUL1'
+  project_code: '909'
+  telemarketer: 'SandSky'
+  handle_skus:
+    'SS-PCLAY': 'SS-PCLAY'
+    'SS-BPCLAY': 'SS-BPCLAY'
+
+production:
+  gateway: "gateway.west.innotrac.com"
+  port: 8443
+  post_url: "/invoke/INOC_ATS_CRMS.SOA.InocOrders.DM:InocOrders"
+  username: snsprod
+  password: HW45&92p
+  ftp_url: 65.118.112.212
+  ftp_username: sandsky
+  ftp_password: rRgYHAuHCAj3Whw
+  promotion: 'SSWEB'
+  payment_plan: 'FUL1'
+  project_code: '909'
+  telemarketer: 'SandSky'
+  handle_skus:
+    'SS-PCLAY': 'SS-PCLAY'
+    'SS-BPCLAY': 'SS-BPCLAY'

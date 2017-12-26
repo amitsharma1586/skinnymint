@@ -1,0 +1,1 @@
+AuspostOrder = Class.new(FulfillmentOrder)
